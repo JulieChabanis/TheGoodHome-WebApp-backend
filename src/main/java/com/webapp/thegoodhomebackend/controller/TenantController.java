@@ -39,6 +39,7 @@ public class TenantController {
 
     @DeleteMapping("/{id}")
     public void deleteTenant(@PathVariable("id") Long id) {
+
         tenantService.deleteTenant(id);
     }
 }
