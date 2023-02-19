@@ -3,38 +3,48 @@ package com.webapp.thegoodhomebackend.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "agencies")
-public class AgencyEntity {
+@Table(name = "appartments")
+public class AppartmentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "agency_id")
+    @Column(name = "appartment_id")
     private long id;
-    @Column(name = "name")
-    private String name;
+
     @Column(name = "address")
     private String address;
-    @Column(name = "additional_address")
+
+    @Column(name = "addditional_address")
     private String additionalAddress;
+
     @Column(name = "city")
     private String city;
-    @Column(name = "zipcode")
-    private String zipcode;
-    @Column(name = "description")
-    private String description;
 
-    public AgencyEntity() {
+    @Column (name = "zipcode")
+    private String zipcode;
+
+    @Column(name = "rental")
+    private float rental;
+
+    @Column(name = "rental_charges")
+    private float rentalCharges;
+
+    @Column(name ="security_deposit")
+    private float securityDeposit;
+
+    public AppartmentEntity() {
 
     }
 
-    public AgencyEntity(long id, String name, String address, String additionalAddress, String city, String zipcode, String description) {
+    public AppartmentEntity(long id, String address, String additionalAddress, String city, String zipcode, float rental, float rentalCharges, float securityDeposit) {
         this.id = id;
-        this.name = name;
         this.address = address;
         this.additionalAddress = additionalAddress;
         this.city = city;
         this.zipcode = zipcode;
-        this.description = description;
+        this.rental = rental;
+        this.rentalCharges = rentalCharges;
+        this.securityDeposit = securityDeposit;
     }
 
     public long getId() {
@@ -43,14 +53,6 @@ public class AgencyEntity {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getAddress() {
@@ -85,11 +87,27 @@ public class AgencyEntity {
         this.zipcode = zipcode;
     }
 
-    public String getDescription() {
-        return description;
+    public float getRental() {
+        return rental;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setRental(float rental) {
+        this.rental = rental;
+    }
+
+    public float getRentalCharges() {
+        return rentalCharges;
+    }
+
+    public void setRentalCharges(float rentalCharges) {
+        this.rentalCharges = rentalCharges;
+    }
+
+    public float getSecurityDeposit() {
+        return securityDeposit;
+    }
+
+    public void setSecurityDeposit(float securityDeposit) {
+        this.securityDeposit = securityDeposit;
     }
 }
