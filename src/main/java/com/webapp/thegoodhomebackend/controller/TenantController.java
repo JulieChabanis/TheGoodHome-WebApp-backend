@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/tenants")
+@RequestMapping("/api/v1/tenants")
+@CrossOrigin("http://localhost:3000/")
 public class TenantController {
 
     private final TenantService tenantService;

@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/agencies")
+@RequestMapping("api/v1/agencies")
+@CrossOrigin("http://localhost:3000/")
 public class AgencyController {
 
     private final AgencyService agencyService;
