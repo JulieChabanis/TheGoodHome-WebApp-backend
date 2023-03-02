@@ -2,45 +2,42 @@ package com.webapp.thegoodhomebackend.controller;
 
 import com.webapp.thegoodhomebackend.entity.TenantEntity;
 import com.webapp.thegoodhomebackend.service.TenantService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/tenants")
+@RequestMapping("/api/tenants")
 @CrossOrigin("http://localhost:3000/")
 public class TenantController {
 
-    private final TenantService tenantService;
+    @Autowired
+    private TenantService tenantService;
 
-    public TenantController(TenantService tenantService) {
-        this.tenantService = tenantService;
-    }
 
-    @GetMapping
-    public List<TenantEntity> findAllTenants() {
-        return tenantService.findAllTenants();
+    @GetMapping("")
+    public List<TenantEntity> getTenants() {
+        return tenantService.getTenants();
     }
 
     @GetMapping("/{id}")
-    public Optional<TenantEntity> findTenantById(@PathVariable("id") Long id) {
-        return tenantService.findById(id);
+    public TenantEntity getTenant(@PathVariable Long id) {
+        return tenantService.getTenant(id);
     }
 
-    @PostMapping
-    public TenantEntity saveTenant(@RequestBody TenantEntity tenantEntity) {
-        return tenantService.saveTenant(tenantEntity);
+    @PostMapping("")
+    public void addTenant (@RequestBody TenantEntity tenantEntity){
+        tenantService.addTenant(tenantEntity);
     }
 
-    @PutMapping
-    public TenantEntity updateTenant(@RequestBody TenantEntity tenantEntity) {
-        return tenantService.updateTenant(tenantEntity);
+    @PutMapping("{id}")
+    public void updateTenant(@PathVariable Long id, @RequestBody TenantEntity tenantEntity) {
+        tenantService.updateTenant(id, tenantEntity);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTenant(@PathVariable("id") Long id) {
-
+    public void deleteTenant(@PathVariable Long id) {
         tenantService.deleteTenant(id);
     }
 }
