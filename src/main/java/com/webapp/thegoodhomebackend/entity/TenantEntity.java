@@ -1,9 +1,11 @@
 package com.webapp.thegoodhomebackend.entity;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tenants")
+@NoArgsConstructor
 public class TenantEntity {
 
     @Id
@@ -18,9 +20,6 @@ public class TenantEntity {
     private String email;
     @Column(name = "phone_number")
     private String phone;
-
-    public TenantEntity() {
-    }
 
     public TenantEntity(long id, String name, String lastname, String email, String phone) {
         this.id = id;
@@ -46,7 +45,7 @@ public class TenantEntity {
         this.name = name;
     }
 
-    public String getLastname() {
+    public String getLastName() {
         return lastname;
     }
 
@@ -62,11 +61,11 @@ public class TenantEntity {
         this.email = email;
     }
 
-    public String getPhone() {
+    public String getPhoneNumber() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public void setPhoneNumber(String phone) {
         this.phone = phone;
     }
 }
