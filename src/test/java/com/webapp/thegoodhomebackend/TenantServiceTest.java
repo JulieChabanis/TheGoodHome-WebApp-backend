@@ -56,7 +56,7 @@ public class TenantServiceTest {
     // Test Get Tenant by ID - GET Method //
     @Test
     public void testGetTenant() {
-        TenantEntity tenantEntity = new TenantEntity(1, "Leon", "Chabanwood", "leonchabanwood@test.com", "8545825250");
+        TenantEntity tenantEntity = new TenantEntity(1L, "Leon", "Chabanwood", "leonchabanwood@test.com", "8545825250");
 
         when(tenantRepository.findById(1L)).thenReturn(Optional.of(tenantEntity));
 
@@ -70,11 +70,11 @@ public class TenantServiceTest {
 
     @Test
     public void testUpdateTenant() {
-        TenantEntity tenantEntity = new TenantEntity(1, "Leon", "Chabanwood", "leonchabanwood", "8545825250");
+        TenantEntity tenantEntity = new TenantEntity(1L, "Leon", "Chabanwood", "leonchabanwood", "8545825250");
 
         when(tenantRepository.findById(1L)).thenReturn(Optional.of(tenantEntity));
 
-        TenantEntity updatedTenant = new TenantEntity(1, "Leon", "Chabanwood", "leonchabanwood", "1111111111");
+        TenantEntity updatedTenant = new TenantEntity(1L, "Leon", "Chabanwood", "leonchabanwood", "1111111111");
 
         tenantService.updateTenant(1L, updatedTenant);
 
@@ -84,11 +84,11 @@ public class TenantServiceTest {
     // Test Delete Tenant - DELETE Method //
     @Test
     public void testDeleteTenant() {
-        TenantEntity tenantEntity = new TenantEntity(1, "Leon", "Chabanwood", "leonchabanwood", "8545825250");
+        TenantEntity tenantEntity = new TenantEntity(1L, "Leon", "Chabanwood", "leonchabanwood", "8545825250");
 
         when(tenantRepository.findById(1L)).thenReturn(Optional.of(tenantEntity));
 
-        tenantService.deleteTenant(1L);
+        tenantService.deleteTenantById(1L);
 
         verify(tenantRepository, times(1)).deleteById(1L);
     }

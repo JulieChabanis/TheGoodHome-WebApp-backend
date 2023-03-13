@@ -43,7 +43,7 @@ public class TenantService {
         }
    }
 
-    public void deleteTenant(long id) {
+    public void deleteTenantById(long id) {
         Optional<TenantEntity> tenantEntity = tenantRepository.findById(id);
         if (tenantEntity.isPresent()) {
             tenantRepository.deleteById(id);

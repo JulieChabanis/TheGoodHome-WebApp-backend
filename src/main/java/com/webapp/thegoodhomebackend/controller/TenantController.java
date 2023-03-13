@@ -37,7 +37,8 @@ public class TenantController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteTenant(@PathVariable Long id) {
-        tenantService.deleteTenant(id);
+    String deleteTenantById(@PathVariable Long id) {
+        tenantService.deleteTenantById(id);
+        return "Tenant with id "+id+" has been deleted success.";
     }
 }
