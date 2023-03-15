@@ -3,13 +3,15 @@ package com.webapp.thegoodhomebackend.controller;
 import com.webapp.thegoodhomebackend.entity.TenantEntity;
 import com.webapp.thegoodhomebackend.service.TenantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/tenants")
-@CrossOrigin("http://localhost:3000/")
+@CrossOrigin(origins = "http://localhost:3000")
+
 public class TenantController {
 
     @Autowired
@@ -32,9 +34,11 @@ public class TenantController {
     }
 
     @PutMapping("{id}")
-    public void updateTenant(@PathVariable Long id, @RequestBody TenantEntity tenantEntity) {
+    public ResponseEntity<String> updateTenant(@PathVariable Long id, @RequestBody TenantEntity tenantEntity) {
         tenantService.updateTenant(id, tenantEntity);
+        return ResponseEntity.ok("Tenant with id " + id + " has been modified successfully.");
     }
+
 
     @DeleteMapping("/{id}")
     String deleteTenantById(@PathVariable Long id) {

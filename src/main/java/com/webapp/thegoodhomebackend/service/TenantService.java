@@ -30,6 +30,7 @@ public class TenantService {
     }
 
     public void addTenant (TenantEntity tenantEntity) {
+
         tenantRepository.save(tenantEntity);
     }
 
@@ -43,7 +44,7 @@ public class TenantService {
         }
    }
 
-    public void deleteTenantById(long id) {
+    public void deleteTenantById(Long id) {
         Optional<TenantEntity> tenantEntity = tenantRepository.findById(id);
         if (tenantEntity.isPresent()) {
             tenantRepository.deleteById(id);
