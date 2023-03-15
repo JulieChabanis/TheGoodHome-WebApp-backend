@@ -61,11 +61,11 @@ public class TenantEntity {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhoneNumber(String phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 }

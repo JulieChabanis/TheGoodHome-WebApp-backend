@@ -30,7 +30,7 @@ public class TenantServiceTest {
     @Test
     public void testAddTenant() {
         TenantEntity tenantEntity = new TenantEntity(1, "Leon", "Chabanwood", "leonchabanwood", "8545825250");
-        tenantService.addTenant(tenantEntity);
+        tenantService.createTenant(tenantEntity);
         verify(tenantRepository, times(1)).save(tenantEntity);
     }
 
@@ -65,7 +65,7 @@ public class TenantServiceTest {
         assertEquals("Leon", result.getName());
         assertEquals("Chabanwood", result.getLastName());
         assertEquals("leonchabanwood@test.com", result.getEmail());
-        assertEquals("8545825250", result.getPhoneNumber());
+        assertEquals("8545825250", result.getPhone());
     }
 
     @Test
