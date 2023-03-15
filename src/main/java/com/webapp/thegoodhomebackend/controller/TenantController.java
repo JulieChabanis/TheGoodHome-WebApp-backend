@@ -29,8 +29,8 @@ public class TenantController {
     }
 
     @PostMapping("")
-    public void addTenant (@RequestBody TenantEntity tenantEntity){
-        tenantService.addTenant(tenantEntity);
+    public void createTenant (@RequestBody TenantEntity tenantEntity){
+        tenantService.createTenant(tenantEntity);
     }
 
     @PutMapping("{id}")

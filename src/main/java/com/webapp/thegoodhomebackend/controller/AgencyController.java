@@ -29,8 +29,8 @@ public class AgencyController {
     }
 
     @PostMapping("")
-    public void addAgency (@RequestBody AgencyEntity agencyEntity) {
-        agencyService.addAgency(agencyEntity);
+    public void createAgency (@RequestBody AgencyEntity agencyEntity) {
+        agencyService.createAgency(agencyEntity);
     }
     @PutMapping("{id}")
     public ResponseEntity<String> updateAgency(@PathVariable Long id, @RequestBody AgencyEntity agencyEntity) {

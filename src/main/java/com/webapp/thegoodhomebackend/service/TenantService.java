@@ -29,7 +29,7 @@ public class TenantService {
         }
     }
 
-    public void addTenant (TenantEntity tenantEntity) {
+    public void createTenant (TenantEntity tenantEntity) {
 
         tenantRepository.save(tenantEntity);
     }

@@ -27,7 +27,7 @@ public class AgencyService {
         }
     }
 
-    public void addAgency (AgencyEntity agencyEntity) {
+    public void createAgency (AgencyEntity agencyEntity) {
         agencyRepository.save(agencyEntity);
     }
 
