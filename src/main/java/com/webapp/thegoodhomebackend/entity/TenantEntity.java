@@ -18,7 +18,7 @@ public class TenantEntity {
     private String lastname;
     @Column(name = "email")
     private String email;
-    @Column(name = "phone_number")
+    @Column(name = "phone")
     private String phone;
 
     public TenantEntity(long id, String name, String lastname, String email, String phone) {
