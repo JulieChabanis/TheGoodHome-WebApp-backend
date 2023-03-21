@@ -17,7 +17,6 @@ public class TenantController {
     @Autowired
     private TenantService tenantService;
 
-
     @GetMapping("")
     public List<TenantEntity> getTenants() {
         return tenantService.getTenants();
@@ -33,7 +32,7 @@ public class TenantController {
         tenantService.createTenant(tenantEntity);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateTenant(@PathVariable Long id, @RequestBody TenantEntity tenantEntity) {
         tenantService.updateTenant(id, tenantEntity);
         return ResponseEntity.ok("Tenant with id " + id + " has been modified successfully.");
