@@ -15,16 +15,16 @@ public class TenantEntity {
     @Column(name = "name")
     private String name;
     @Column(name = "lastname")
-    private String lastname;
+    private String lastName;
     @Column(name = "email")
     private String email;
     @Column(name = "phone")
     private String phone;
 
-    public TenantEntity(long id, String name, String lastname, String email, String phone) {
+    public TenantEntity(long id, String name, String lastName, String email, String phone) {
         this.id = id;
         this.name = name;
-        this.lastname = lastname;
+        this.lastName = lastName;
         this.email = email;
         this.phone = phone;
     }
@@ -46,11 +46,11 @@ public class TenantEntity {
     }
 
     public String getLastName() {
-        return lastname;
+        return lastName;
     }
 
-    public void setLastName(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
