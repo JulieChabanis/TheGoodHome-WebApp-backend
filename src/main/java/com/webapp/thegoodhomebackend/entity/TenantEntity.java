@@ -49,7 +49,7 @@ public class TenantEntity {
         return lastname;
     }
 
-    public void setLastname(String lastname) {
+    public void setLastName(String lastname) {
         this.lastname = lastname;
     }
 
