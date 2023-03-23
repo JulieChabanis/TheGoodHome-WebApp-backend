@@ -3,6 +3,8 @@ package com.webapp.thegoodhomebackend.entity;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "appartments")
 @NoArgsConstructor
@@ -33,6 +35,9 @@ public class AppartmentEntity {
 
     @Column(name ="security_deposit")
     private float securityDeposit;
+
+    @OneToMany(mappedBy = "appartment", cascade = CascadeType.ALL)
+    private List<ImageEntity> images;
 
 
     public AppartmentEntity(long id, String address, String additionalAddress, String city, String zipcode, float rental, float rentalCharges, float securityDeposit) {
