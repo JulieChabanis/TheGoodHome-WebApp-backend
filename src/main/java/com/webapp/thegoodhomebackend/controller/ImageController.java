@@ -79,7 +79,7 @@ public class ImageController {
         }
     }
 
-        @DeleteMapping("/{id}")
+        @DeleteMapping("{id}")
         public ResponseEntity<String> deleteImageById(@PathVariable Long id) {
             try {
                 ImageEntity imageEntity = imageRepository.findById(id)
