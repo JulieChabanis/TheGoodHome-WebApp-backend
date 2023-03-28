@@ -16,7 +16,7 @@ public class AppartmentController {
     @Autowired
     private AppartmentService appartmentService;
 
-    @GetMapping
+    @GetMapping("")
     public List<AppartmentEntity> getAppartments() {
         return appartmentService.getAppartments();
     }
@@ -27,19 +27,19 @@ public class AppartmentController {
     }
 
     @PostMapping("")
-    public void createAppartment(@RequestBody AppartmentEntity appartmentEntity) {
+    public void createAppartment (@RequestBody AppartmentEntity appartmentEntity) {
         appartmentService.createAppartment(appartmentEntity);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<String> updateAppartment(@PathVariable Long id, @RequestBody AppartmentEntity appartmentEntity) {
         appartmentService.updateAppartment(id, appartmentEntity);
-        return ResponseEntity.ok("Tenant with id" + id + "has been modified successfully.");
+        return ResponseEntity.ok("Appartment with id " + id + " has been modified successfully.");
     }
 
     @DeleteMapping("/{id}")
     String deleteAppartmentById(@PathVariable Long id) {
         appartmentService.deleteAppartmentById(id);
-        return "Appartment with id" + id +"has been deleted success.";
+        return "Appartment with id " + id +" has been deleted success.";
     }
 }

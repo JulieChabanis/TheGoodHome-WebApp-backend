@@ -20,7 +20,7 @@ public class AppartmentEntity {
     private String title;
 
     @Column(name = "description")
-    private String descritpion;
+    private String description;
 
     @Column(name = "address")
     private String address;
@@ -31,7 +31,7 @@ public class AppartmentEntity {
     @Column(name = "city")
     private String city;
 
-    @Column (name = "zipcode")
+    @Column(name = "zipcode")
     private String zipcode;
 
     @Column(name = "rental")
@@ -40,21 +40,14 @@ public class AppartmentEntity {
     @Column(name = "rental_charges")
     private float rentalCharges;
 
-    @Column(name ="security_deposit")
+    @Column(name = "security_deposit")
     private float securityDeposit;
 
-    @Column(name = "available")
-    private boolean available;
 
-    @OneToMany(mappedBy = "appartment", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JsonIgnoreProperties("appartment")
-    private List<ImageEntity> images;
-
-
-    public AppartmentEntity(long id, String title, String description, String address, String additionalAddress, String city, String zipcode, float rental, float rentalCharges, float securityDeposit, boolean available) {
+    public AppartmentEntity(long id, String title, String description, String address, String additionalAddress, String city, String zipcode, float rental, float rentalCharges, float securityDeposit) {
         this.id = id;
         this.title = title;
-        this.descritpion = description;
+        this.description = description;
         this.address = address;
         this.additionalAddress = additionalAddress;
         this.city = city;
@@ -62,22 +55,31 @@ public class AppartmentEntity {
         this.rental = rental;
         this.rentalCharges = rentalCharges;
         this.securityDeposit = securityDeposit;
-        this.available = available;
     }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) { this.id = id; }
+    public void setId(long id) {
+        this.id = id;
+    }
 
-    public String getTitle() { return title; }
+    public String getTitle() {
+        return title;
+    }
 
-    public void setTitle(String title) { this.title = title; }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-    public String getDescription() { return descritpion; }
+    public String getDescription() {
+        return description;
+    }
 
-    public void setDescription(String description) { this.title = description; }
+    public void setDescription(String description) {
+        this.title = description;
+    }
 
     public String getAddress() {
         return address;
@@ -134,12 +136,4 @@ public class AppartmentEntity {
     public void setSecurityDeposit(float securityDeposit) {
         this.securityDeposit = securityDeposit;
     }
-
-    public boolean isAvailable() { return available; }
-
-    public void setAvailable(boolean available) { this.available = available; }
-
-    public List<ImageEntity> getImages() { return images; }
-
-    public void setImages(List<ImageEntity> images) { this.images =  images; }
 }

@@ -28,18 +28,18 @@ class AppartmentServiceTest {
 
     // Test Add Appartment - POST Method //
     @Test
-     void testAddAppartment() {
-        AppartmentEntity appartmentEntity = new AppartmentEntity(1,"Title", "Description", "848 Wall Street", "740 Building Road", "New-York", "00001", 800, 100, 700, true);
+     public void testAddAppartment() {
+        AppartmentEntity appartmentEntity = new AppartmentEntity(1,"Title", "Description", "848 Wall Street", "740 Building Road", "New-York", "00001", 800, 100, 700);
         appartmentService.createAppartment(appartmentEntity);
         verify(appartmentRepository, times(1)).save(appartmentEntity);
     }
 
     // Test get Appartments - GET Method //
     @Test
-     void testGetAppartments() {
-        AppartmentEntity appartment1 = new AppartmentEntity(1,"Title", "Description", "700 Street Road", "3B Old Money", "New-York", "00001", 1300, 200, 1100, true);
-        AppartmentEntity appartment2 = new AppartmentEntity(2,"Title", "Description", "118 Montague Saint", "Brooklyn", "New-York", "11201", 800, 100, 700, true);
-        AppartmentEntity appartment3 = new AppartmentEntity(3,"Title", "Description", "54 Watts Saint", "Soho", "New-York", "10013", 2100, 200, 1900, true);
+     public void testGetAppartments() {
+        AppartmentEntity appartment1 = new AppartmentEntity(1,"Title", "Description", "700 Street Road", "3B Old Money", "New-York", "00001", 1300, 200, 1100);
+        AppartmentEntity appartment2 = new AppartmentEntity(2,"Title", "Description", "118 Montague Saint", "Brooklyn", "New-York", "11201", 800, 100, 700);
+        AppartmentEntity appartment3 = new AppartmentEntity(3,"Title", "Description", "54 Watts Saint", "Soho", "New-York", "10013", 2100, 200, 1900);
 
         List<AppartmentEntity> appartmentList = Arrays.asList(appartment1, appartment2, appartment3);
 
@@ -57,7 +57,7 @@ class AppartmentServiceTest {
     // Test Get Appartment by ID - GET Method //
     @Test
     void testGetAppartment() {
-        AppartmentEntity appartmentEntity = new AppartmentEntity(3,"Title", "Description", "54 Watts Saint", "Soho", "New-York", "10013", 2100, 200, 1900, true);
+        AppartmentEntity appartmentEntity = new AppartmentEntity(1L, "Title", "Description", "54 Watts Saint", "Soho", "New-York", "10013", 2100, 200, 1900);
 
         when(appartmentRepository.findById(1L)).thenReturn(Optional.of(appartmentEntity));
 
@@ -72,17 +72,16 @@ class AppartmentServiceTest {
         assertEquals(2100, result.getRental());
         assertEquals(200, result.getRentalCharges());
         assertEquals(1900, result.getSecurityDeposit());
-        assertEquals(true, result.isAvailable());
     }
 
     // Test update Appartment - PUT Methode //
     @Test
      void testUpdateAppartment() {
-        AppartmentEntity appartmentEntity = new AppartmentEntity(3, "Title", "Description", "54 Watts Saint", "Soho", "New-York", "10013", 2100, 200, 1900, true);
+        AppartmentEntity appartmentEntity = new AppartmentEntity(1L, "Title", "Description", "54 Watts Saint", "Soho", "New-York", "10013", 2100, 200, 1900);
 
         when(appartmentRepository.findById(1L)).thenReturn(Optional.of(appartmentEntity));
 
-        AppartmentEntity updatedAppartment = new AppartmentEntity(3,"Title", "Description", "53 Watts Saint", "Soho", "New-York", "10013", 2100, 200, 1900, true);
+        AppartmentEntity updatedAppartment = new AppartmentEntity(1L,"Title", "Description", "53 Watts Saint", "Soho", "New-York", "10013", 2100, 200, 1900);
 
         appartmentService.updateAppartment(1L, updatedAppartment);
 
@@ -92,7 +91,7 @@ class AppartmentServiceTest {
     // Test delete appartment - DELETE Method //
     @Test
     void testDeleteAppartment() {
-        AppartmentEntity appartmentEntity = new AppartmentEntity(3,"Title", "Description", "54 Watts Saint", "Soho", "New-York", "10013", 2100, 200, 1900, true);
+        AppartmentEntity appartmentEntity = new AppartmentEntity(1L,"Title", "Description", "54 Watts Saint", "Soho", "New-York", "10013", 2100, 200, 1900);
 
         when(appartmentRepository.findById(1L)).thenReturn(Optional.of(appartmentEntity));
 
