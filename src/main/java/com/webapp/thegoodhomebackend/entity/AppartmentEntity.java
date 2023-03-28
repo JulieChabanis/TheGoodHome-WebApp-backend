@@ -1,10 +1,7 @@
 package com.webapp.thegoodhomebackend.entity;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
 
 @Entity
 @Table(name = "appartments")
@@ -78,7 +75,7 @@ public class AppartmentEntity {
     }
 
     public void setDescription(String description) {
-        this.title = description;
+        this.description = description;
     }
 
     public String getAddress() {
