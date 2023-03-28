@@ -11,14 +11,11 @@ import java.util.Optional;
 @Service
 public class AppartmentService {
 
-    private final AppartmentRepository appartmentRepository;
-
     @Autowired
-    public AppartmentService(AppartmentRepository appartmentRepository) {
-        this.appartmentRepository = appartmentRepository;
-    }
+    private AppartmentRepository appartmentRepository;
 
     public List<AppartmentEntity> getAppartments() {
+
         return appartmentRepository.findAll();
     }
 
@@ -32,6 +29,7 @@ public class AppartmentService {
     }
 
     public void createAppartment(AppartmentEntity appartmentEntity) {
+
         appartmentRepository.save(appartmentEntity);
     }
 
@@ -50,7 +48,7 @@ public class AppartmentService {
         if (appartmentEntity.isPresent()) {
             appartmentRepository.deleteById(id);
         } else {
-            throw new RuntimeException("Tenant not found with id" + id);
+            throw new RuntimeException("Tenant not found with id " + id);
         }
     }
 
