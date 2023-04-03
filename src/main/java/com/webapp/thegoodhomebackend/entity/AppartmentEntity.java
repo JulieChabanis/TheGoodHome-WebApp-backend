@@ -2,6 +2,9 @@ package com.webapp.thegoodhomebackend.entity;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 @Table(name = "appartments")
@@ -40,6 +43,8 @@ public class AppartmentEntity {
     @Column(name = "security_deposit")
     private float securityDeposit;
 
+    @OneToMany(mappedBy = "appartmentEntity")
+    private List<LeaseContractEntity> leaseContractEntityList;
 
     public AppartmentEntity(long id, String title, String description, String address, String additionalAddress, String city, String zipcode, float rental, float rentalCharges, float securityDeposit) {
         this.id = id;
@@ -132,5 +137,13 @@ public class AppartmentEntity {
 
     public void setSecurityDeposit(float securityDeposit) {
         this.securityDeposit = securityDeposit;
+    }
+
+    public void addLeaseContract(LeaseContractEntity leaseContractEntity) {
+        if (leaseContractEntityList == null) {
+            leaseContractEntityList = new ArrayList<>();
+        }
+        leaseContractEntityList.add(leaseContractEntity);
+        leaseContractEntity.setAppartmentEntity(this);
     }
 }

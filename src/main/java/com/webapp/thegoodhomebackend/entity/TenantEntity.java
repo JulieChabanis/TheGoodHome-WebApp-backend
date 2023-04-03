@@ -3,6 +3,8 @@ package com.webapp.thegoodhomebackend.entity;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tenants")
 @NoArgsConstructor
@@ -20,6 +22,9 @@ public class TenantEntity {
     private String email;
     @Column(name = "phone")
     private String phone;
+
+    @OneToMany (mappedBy = "tenantEntity")
+    private List<LeaseContractEntity> leaseContractEntityList;
 
     public TenantEntity(long id, String name, String lastName, String email, String phone) {
         this.id = id;
@@ -67,6 +72,14 @@ public class TenantEntity {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<LeaseContractEntity> getLeaseContracts() {
+        return leaseContractEntityList;
+    }
+
+    public void setLeaseContracts(List<LeaseContractEntity> leaseContracts) {
+        this.leaseContractEntityList = leaseContracts;
     }
 }
 
