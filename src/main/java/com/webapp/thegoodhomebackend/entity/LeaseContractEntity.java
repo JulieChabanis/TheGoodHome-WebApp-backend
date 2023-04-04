@@ -18,7 +18,7 @@ public class LeaseContractEntity {
     @JoinColumn(name = "tenant_id", nullable = false)
     private TenantEntity tenantEntity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "appartment_id", nullable = false)
     private AppartmentEntity appartmentEntity;
 
@@ -50,10 +50,12 @@ public class LeaseContractEntity {
     }
 
     public AppartmentEntity getAppartmentEntity() {
+
         return appartmentEntity;
     }
 
     public void setAppartmentEntity(AppartmentEntity appartmentEntity) {
+
         this.appartmentEntity = appartmentEntity;
     }
 

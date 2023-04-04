@@ -23,6 +23,7 @@ public class AppartmentController {
 
     @GetMapping("{id}")
     public AppartmentEntity getAppartment(@PathVariable Long id) {
+
         return appartmentService.getAppartment(id);
     }
 

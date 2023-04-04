@@ -2,7 +2,6 @@ package com.webapp.thegoodhomebackend.entity;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -139,12 +138,5 @@ public class AppartmentEntity {
         this.securityDeposit = securityDeposit;
     }
 
-    public void addLeaseContract(LeaseContractEntity leaseContractEntity) {
-        if (leaseContractEntityList == null) {
-            leaseContractEntityList = new ArrayList<>();
-        }
-        leaseContractEntityList.add(leaseContractEntity);
-        leaseContractEntity.setAppartmentEntity(this);
-    }
 
 }

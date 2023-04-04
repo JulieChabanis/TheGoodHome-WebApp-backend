@@ -1,8 +1,8 @@
 package com.webapp.thegoodhomebackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 @Entity
@@ -24,6 +24,7 @@ public class TenantEntity {
     private String phone;
 
     @OneToMany (mappedBy = "tenantEntity", fetch = FetchType.EAGER)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private List<LeaseContractEntity> leaseContractEntityList;
 
     public TenantEntity(long id, String name, String lastName, String email, String phone) {
@@ -76,12 +77,5 @@ public class TenantEntity {
     }
 
 
-    public List<LeaseContractEntity> getLeaseContracts() {
-        return leaseContractEntityList;
-    }
-
-    public void setLeaseContracts(List<LeaseContractEntity> leaseContracts) {
-        this.leaseContractEntityList = leaseContracts;
-    }
 }
 
