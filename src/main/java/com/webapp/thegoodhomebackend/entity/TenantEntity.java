@@ -32,6 +32,7 @@ public class TenantEntity {
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
+
     }
 
     public long getId() {
@@ -73,6 +74,7 @@ public class TenantEntity {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
 
     public List<LeaseContractEntity> getLeaseContracts() {
         return leaseContractEntityList;

@@ -146,4 +146,5 @@ public class AppartmentEntity {
         leaseContractEntityList.add(leaseContractEntity);
         leaseContractEntity.setAppartmentEntity(this);
     }
+
 }
