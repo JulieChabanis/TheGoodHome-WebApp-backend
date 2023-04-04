@@ -23,7 +23,7 @@ public class TenantEntity {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany (mappedBy = "tenantEntity")
+    @OneToMany (mappedBy = "tenantEntity", fetch = FetchType.EAGER)
     private List<LeaseContractEntity> leaseContractEntityList;
 
     public TenantEntity(long id, String name, String lastName, String email, String phone) {

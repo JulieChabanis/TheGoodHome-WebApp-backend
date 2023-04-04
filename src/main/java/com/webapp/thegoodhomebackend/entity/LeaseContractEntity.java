@@ -14,7 +14,7 @@ public class LeaseContractEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "tenant_id", nullable = false)
     private TenantEntity tenantEntity;
 
