@@ -6,12 +6,13 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "lease_contract")
+@Table(name = "lease_contracts")
 @NoArgsConstructor
 public class LeaseContractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "lease_contract_id")
     private Long id;
 
     @ManyToOne
