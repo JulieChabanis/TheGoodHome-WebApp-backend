@@ -23,14 +23,22 @@ public class LeaseContractEntity {
     @JoinColumn(name = "appartment_id", nullable = false)
     private AppartmentEntity appartmentEntity;
 
+    @Column (name = "security_deposit_amount")
+    private float securityDepositAmount;
+
+    @Column(name = "security_deposit_paid")
+    private Boolean securityDepositPaid;
+
     @Column(name ="created_at", nullable = false)
     private LocalDate createdAt;
 
 
-    public LeaseContractEntity(Long id, TenantEntity tenantEntity, AppartmentEntity appartmentEntity, LocalDate createdAt) {
+    public LeaseContractEntity(Long id, TenantEntity tenantEntity, AppartmentEntity appartmentEntity, float securityDepositAmount, Boolean securityDepositPaid, LocalDate createdAt) {
         this.id = id;
         this.tenantEntity = tenantEntity;
         this.appartmentEntity = appartmentEntity;
+        this.securityDepositAmount = securityDepositAmount;
+        this.securityDepositPaid = securityDepositPaid;
         this.createdAt = createdAt;
     }
 
@@ -58,6 +66,18 @@ public class LeaseContractEntity {
     public void setAppartmentEntity(AppartmentEntity appartmentEntity) {
 
         this.appartmentEntity = appartmentEntity;
+    }
+
+    public float getSecurityDepositAmount() {
+        return securityDepositAmount;
+    }
+
+    public void setSecurityDepositAmount(float securityDepositAmount) {
+        this.securityDepositAmount = securityDepositAmount;
+    }
+
+    public Boolean getSecurityDepositPaid() {
+        return securityDepositPaid;
     }
 
     public LocalDate getCreatedAt() {
