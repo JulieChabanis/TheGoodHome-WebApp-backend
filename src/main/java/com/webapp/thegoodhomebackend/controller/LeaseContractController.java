@@ -35,7 +35,7 @@ public class LeaseContractController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteLeaseContract(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteLeaseContractById(@PathVariable Long id) {
         leaseContractService.deleteLeaseContractById(id);
         return ResponseEntity.noContent().build();
     }
