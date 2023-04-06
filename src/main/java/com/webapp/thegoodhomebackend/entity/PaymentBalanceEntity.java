@@ -27,14 +27,18 @@ public class PaymentBalanceEntity {
     @Column(name = "is_paid")
     private Boolean isPaid;
 
+    @Column(name = "rental_payment_amount_with_tax")
+    private float rentalPaymentAmountWithTax;
+
     @Column(name= "payment_date", nullable = false)
     private LocalDate paymentDate;
 
-    public PaymentBalanceEntity(Long id, LeaseContractEntity leaseContractEntity, float rentalPaymentAmount, Boolean isPaid, LocalDate paymentDate) {
+    public PaymentBalanceEntity(Long id, LeaseContractEntity leaseContractEntity, float rentalPaymentAmount, Boolean isPaid, float rentalPaymentAmountWithTax, LocalDate paymentDate) {
         this.id = id;
         this.leaseContractEntity = leaseContractEntity;
         this.rentalPaymentAmount = rentalPaymentAmount;
         this.isPaid = isPaid;
+        this.rentalPaymentAmountWithTax =rentalPaymentAmountWithTax;
         this.paymentDate = paymentDate;
     }
 
@@ -59,15 +63,24 @@ public class PaymentBalanceEntity {
     }
 
     public void setRentalPaymentAmount(float rentalPaymentAmount) {
+
         this.rentalPaymentAmount = rentalPaymentAmount;
     }
 
-    public Boolean getPaid() {
+    public Boolean getIsPaid() {
         return isPaid;
     }
 
-    public void setPaid(Boolean paid) {
-        isPaid = paid;
+    public void setIsPaid(Boolean isPaid) {
+       this.isPaid = isPaid;
+    }
+
+    public float getRentalPaymentAmountWithTax() {
+        return rentalPaymentAmountWithTax;
+    }
+
+    public void setRentalPaymentAmountWithTax(float rentalPaymentAmountWithTax) {
+        this.rentalPaymentAmountWithTax = rentalPaymentAmountWithTax;
     }
 
     public LocalDate getPaymentDate() {

@@ -80,6 +80,10 @@ public class LeaseContractEntity {
         return securityDepositPaid;
     }
 
+    public void setSecurityDepositPaid(Boolean securityDepositPaid) {
+        this.securityDepositPaid = securityDepositPaid;
+    }
+
     public LocalDate getCreatedAt() {
         return createdAt;
     }
