@@ -21,7 +21,7 @@ public class AppartmentController {
         return appartmentService.getAppartments();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public AppartmentEntity getAppartment(@PathVariable Long id) {
 
         return appartmentService.getAppartment(id);

@@ -2,7 +2,7 @@ package com.webapp.thegoodhomebackend.service;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
-import com.webapp.thegoodhomebackend.entity.TenantEntity;
+import com.webapp.thegoodhomebackend.entity.LeaseContractEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
@@ -13,7 +13,7 @@ public class PdfLeaseContractService {
 
     private PdfLeaseContractService() {}
 
-    public static byte[] generatePdf(TenantEntity tenantEntity) throws DocumentException {
+    public static byte[] generatePdf(LeaseContractEntity leaseContractEntity) throws DocumentException {
         Document document = new Document();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PdfWriter.getInstance(document, outputStream);
@@ -43,10 +43,10 @@ public class PdfLeaseContractService {
         List list = new List(List.UNORDERED);
         Font fontBold = new Font(Font.FontFamily.UNDEFINED, 10, Font.BOLD);
         Font fontSize = new Font(Font.FontFamily.UNDEFINED, 10);
-        list.add(new ListItem("Nom et Prénom du ou des Locataire : " + tenantEntity.getName()  + " " + tenantEntity.getLastName(),fontBold));
-        list.add(new ListItem("Email : " + tenantEntity.getEmail(), fontSize));
-        list.add(new ListItem("Téléphone : " + tenantEntity.getPhone(), fontSize));
-        list.add(new ListItem("Identifiant Locataire : " + tenantEntity.getId(), fontSize));
+        list.add(new ListItem("Nom et Prénom du ou des Locataire : " + leaseContractEntity.getTenantEntity().getName()  + " " + leaseContractEntity.getTenantEntity().getLastName(),fontBold));
+        list.add(new ListItem("Email : " + leaseContractEntity.getTenantEntity().getEmail(), fontSize));
+        list.add(new ListItem("Téléphone : " + leaseContractEntity.getTenantEntity().getPhone(), fontSize));
+        list.add(new ListItem("Identifiant Locataire : " + leaseContractEntity.getTenantEntity().getId(), fontSize));
         document.add(list);
 
         Paragraph text2 = new Paragraph("Désigné(s) « le locataire »", new Font(Font.FontFamily.UNDEFINED, 10, Font.BOLD ));
