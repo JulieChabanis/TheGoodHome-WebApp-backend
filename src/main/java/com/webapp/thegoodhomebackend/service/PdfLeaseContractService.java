@@ -3,11 +3,15 @@ import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import com.webapp.thegoodhomebackend.entity.TenantEntity;
+import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
 
 
+@Service
 public class PdfLeaseContractService {
+
+    private PdfLeaseContractService() {}
 
     public static byte[] generatePdf(TenantEntity tenantEntity) throws DocumentException {
         Document document = new Document();
@@ -39,7 +43,7 @@ public class PdfLeaseContractService {
         List list = new List(List.UNORDERED);
         Font fontBold = new Font(Font.FontFamily.UNDEFINED, 10, Font.BOLD);
         Font fontSize = new Font(Font.FontFamily.UNDEFINED, 10);
-        list.add(new ListItem("Nom et Prénom du ou des Locataire : " + tenantEntity.getName() + tenantEntity.getLastName(),fontBold));
+        list.add(new ListItem("Nom et Prénom du ou des Locataire : " + tenantEntity.getName()  + " " + tenantEntity.getLastName(),fontBold));
         list.add(new ListItem("Email : " + tenantEntity.getEmail(), fontSize));
         list.add(new ListItem("Téléphone : " + tenantEntity.getPhone(), fontSize));
         list.add(new ListItem("Identifiant Locataire : " + tenantEntity.getId(), fontSize));
