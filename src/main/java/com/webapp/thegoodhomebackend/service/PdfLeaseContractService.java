@@ -2,13 +2,14 @@ package com.webapp.thegoodhomebackend.service;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
+import com.webapp.thegoodhomebackend.entity.TenantEntity;
 
 import java.io.ByteArrayOutputStream;
 
 
 public class PdfLeaseContractService {
 
-    public static byte[] generatePdf() throws DocumentException {
+    public static byte[] generatePdf(TenantEntity tenantEntity) throws DocumentException {
         Document document = new Document();
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         PdfWriter.getInstance(document, outputStream);
@@ -27,25 +28,55 @@ public class PdfLeaseContractService {
         document.add(new LineSeparator());
 
         // Partie 1 //
-        Paragraph sousTitre1 = new Paragraph("1. Désignation des Parties", new Font(Font.FontFamily.UNDEFINED, 13, Font.BOLD));
+        Paragraph sousTitre1 = new Paragraph("1. DESIGNATION DES PARTIES", new Font(Font.FontFamily.UNDEFINED, 14, Font.BOLD));
         sousTitre1.setSpacingAfter(10);
         document.add(sousTitre1);
 
-        Paragraph text1 = new Paragraph("Le présent contrat est conclu entre les soussignés : ", new Font(Font.FontFamily.UNDEFINED, 12));
+        Paragraph text1 = new Paragraph("Le présent contrat est conclu entre les soussignés : ", new Font(Font.FontFamily.UNDEFINED, 12, Font.BOLD));
         text1.setSpacingAfter(5);
         document.add(text1);
+
+        List list = new List(List.UNORDERED);
+        Font fontBold = new Font(Font.FontFamily.UNDEFINED, 10, Font.BOLD);
+        Font fontSize = new Font(Font.FontFamily.UNDEFINED, 10);
+        list.add(new ListItem("Nom et Prénom du ou des Locataire : " + tenantEntity.getName() + tenantEntity.getLastName(),fontBold));
+        list.add(new ListItem("Email : " + tenantEntity.getEmail(), fontSize));
+        list.add(new ListItem("Téléphone : " + tenantEntity.getPhone(), fontSize));
+        list.add(new ListItem("Identifiant Locataire : " + tenantEntity.getId(), fontSize));
+        document.add(list);
+
+        Paragraph text2 = new Paragraph("Désigné(s) « le locataire »", new Font(Font.FontFamily.UNDEFINED, 10, Font.BOLD ));
+        text2.setSpacingAfter(5);
+        document.add(text2);
+
+        List list1 = new List(List.UNORDERED);
+        list1.add(new ListItem("Nom du Bailleur : ", fontBold));
+        list1.add(new ListItem("Adresse : ", fontSize));
+        list1.add(new ListItem("Adresse complémentaire : ", fontSize));
+        list1.add(new ListItem("Ville et Code Postal : ", fontSize));
+        list1.add(new ListItem("Identifiant Bailleur : ", fontSize));
+        document.add(list);
+
+        Paragraph text3 = new Paragraph("Désigné(s) « le bailleur »", new Font(Font.FontFamily.UNDEFINED, 10, Font.BOLD ));
+        text3.setSpacingAfter(5);
+        document.add(text3);
+
+        Paragraph text4 = new Paragraph("Il a été convenu ce qui suit : ", new Font(Font.FontFamily.UNDEFINED, 12));
+        text4.setSpacingAfter(5);
+        document.add(text4);
+
 
         document.add(new LineSeparator());
 
         // Partie 2 //
-        Paragraph sousTitre2 = new Paragraph("2. Objet du Contrat", new Font(Font.FontFamily.UNDEFINED, 13, Font.BOLD));
+        Paragraph sousTitre2 = new Paragraph("2. OBJET DU CONTRAT", new Font(Font.FontFamily.UNDEFINED, 14, Font.BOLD));
         sousTitre2.setSpacingAfter(10);
         document.add(sousTitre2);
 
         document.add(new LineSeparator());
 
         // Partie 3 //
-        Paragraph sousTitre3 = new Paragraph("3. Conditions financières", new Font(Font.FontFamily.UNDEFINED, 13, Font.BOLD));
+        Paragraph sousTitre3 = new Paragraph("3. CONDITIONS FINANCIERES", new Font(Font.FontFamily.UNDEFINED, 14, Font.BOLD));
         sousTitre3.setSpacingAfter(10);
         document.add(sousTitre3);
 

@@ -1,6 +1,7 @@
 package com.webapp.thegoodhomebackend.controller;
 
 import com.itextpdf.text.DocumentException;
+import com.webapp.thegoodhomebackend.entity.TenantEntity;
 import com.webapp.thegoodhomebackend.service.PdfLeaseContractService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -17,7 +18,7 @@ public class GeneratorPdfController {
 
     @GetMapping(value = "/pdf", produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<byte[]> generatePdf() throws DocumentException {
-        byte[] pdfContent = PdfLeaseContractService.generatePdf();
+        byte[] pdfContent = PdfLeaseContractService.generatePdf(new TenantEntity());
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
         headers.setContentDispositionFormData("attachment", "document.pdf");
