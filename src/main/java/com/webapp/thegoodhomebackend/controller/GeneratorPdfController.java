@@ -22,7 +22,7 @@ public class GeneratorPdfController {
         this.leaseContractService = leaseContractService;
     }
 
-    @GetMapping(value = ("/pdf/{id}"), produces = MediaType.APPLICATION_PDF_VALUE)
+    @GetMapping(value = ("/{id}"), produces = MediaType.APPLICATION_PDF_VALUE)
     public ResponseEntity<byte[]> generatePdf(@PathVariable("id") Long id) throws DocumentException {
         LeaseContractEntity leaseContract = leaseContractService.getLeaseContractById(id);
         byte[] pdfContent = PdfLeaseContractService.generatePdf(leaseContract);
