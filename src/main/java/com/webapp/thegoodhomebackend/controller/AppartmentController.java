@@ -2,44 +2,45 @@ package com.webapp.thegoodhomebackend.controller;
 
 import com.webapp.thegoodhomebackend.entity.AppartmentEntity;
 import com.webapp.thegoodhomebackend.service.AppartmentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/appartments")
-@CrossOrigin("http://localhost:3000/")
+@RequestMapping("/api/appartments")
+@CrossOrigin( origins = "http://localhost:3000")
+
 public class AppartmentController {
+    @Autowired
+    private AppartmentService appartmentService;
 
-    private final AppartmentService appartmentService;
-
-    public AppartmentController(AppartmentService appartmentService) {
-        this.appartmentService = appartmentService;
+    @GetMapping("")
+    public List<AppartmentEntity> getAppartments() {
+        return appartmentService.getAppartments();
     }
 
-    @GetMapping
-    public List<AppartmentEntity> findAllAppartments() {
-        return appartmentService.findAllAppartments();
+    @GetMapping("/{id}")
+    public AppartmentEntity getAppartment(@PathVariable Long id) {
+
+        return appartmentService.getAppartment(id);
     }
 
-    @GetMapping("{id}")
-    public Optional<AppartmentEntity> findAppartmentById(@PathVariable("id")Long id) {
-        return appartmentService.findById(id);
+    @PostMapping("")
+    public void createAppartment (@RequestBody AppartmentEntity appartmentEntity) {
+        appartmentService.createAppartment(appartmentEntity);
     }
 
-    @PostMapping
-    public AppartmentEntity saveAppartment(@RequestBody AppartmentEntity appartmentEntity) {
-        return appartmentService.saveAppartment(appartmentEntity);
-    }
-
-    @PutMapping
-    public AppartmentEntity updateAppartment(@RequestBody AppartmentEntity appartmentEntity) {
-        return appartmentService.updateAppartment(appartmentEntity);
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateAppartment(@PathVariable Long id, @RequestBody AppartmentEntity appartmentEntity) {
+        appartmentService.updateAppartment(id, appartmentEntity);
+        return ResponseEntity.ok("Appartment with id " + id + " has been modified successfully.");
     }
 
     @DeleteMapping("/{id}")
-    public void deleteAppartment(@PathVariable("id") Long id) {
-        appartmentService.deleteAppartment(id);
+    String deleteAppartmentById(@PathVariable Long id) {
+        appartmentService.deleteAppartmentById(id);
+        return "Appartment with id " + id +" has been deleted success.";
     }
 }

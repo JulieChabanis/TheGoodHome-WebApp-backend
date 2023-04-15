@@ -2,45 +2,46 @@ package com.webapp.thegoodhomebackend.controller;
 
 import com.webapp.thegoodhomebackend.entity.TenantEntity;
 import com.webapp.thegoodhomebackend.service.TenantService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/tenants")
-@CrossOrigin("http://localhost:3000/")
+@RequestMapping("/api/tenants")
+@CrossOrigin(origins = "http://localhost:3000")
+
 public class TenantController {
 
-    private final TenantService tenantService;
+    @Autowired
+    private TenantService tenantService;
 
-    public TenantController(TenantService tenantService) {
-        this.tenantService = tenantService;
-    }
-
-    @GetMapping
-    public List<TenantEntity> findAllTenants() {
-        return tenantService.findAllTenants();
+    @GetMapping("")
+    public List<TenantEntity> getTenants() {
+        return tenantService.getTenants();
     }
 
     @GetMapping("/{id}")
-    public Optional<TenantEntity> findTenantById(@PathVariable("id") Long id) {
-        return tenantService.findById(id);
+    public TenantEntity getTenant(@PathVariable Long id) {
+        return tenantService.getTenant(id);
     }
 
-    @PostMapping
-    public TenantEntity saveTenant(@RequestBody TenantEntity tenantEntity) {
-        return tenantService.saveTenant(tenantEntity);
+    @PostMapping("")
+    public void createTenant (@RequestBody TenantEntity tenantEntity){
+        tenantService.createTenant(tenantEntity);
     }
 
-    @PutMapping
-    public TenantEntity updateTenant(@RequestBody TenantEntity tenantEntity) {
-        return tenantService.updateTenant(tenantEntity);
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateTenant(@PathVariable Long id, @RequestBody TenantEntity tenantEntity) {
+        tenantService.updateTenant(id, tenantEntity);
+        return ResponseEntity.ok("Tenant with id " + id + " has been modified successfully.");
     }
+
 
     @DeleteMapping("/{id}")
-    public void deleteTenant(@PathVariable("id") Long id) {
-
-        tenantService.deleteTenant(id);
+    String deleteTenantById(@PathVariable Long id) {
+        tenantService.deleteTenantById(id);
+        return "Tenant with id "+id+" has been deleted success.";
     }
 }

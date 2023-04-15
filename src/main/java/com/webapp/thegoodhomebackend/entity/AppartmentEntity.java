@@ -1,9 +1,13 @@
 package com.webapp.thegoodhomebackend.entity;
-
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
 
 @Entity
 @Table(name = "appartments")
+@NoArgsConstructor
 public class AppartmentEntity {
 
     @Id
@@ -11,16 +15,22 @@ public class AppartmentEntity {
     @Column(name = "appartment_id")
     private long id;
 
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "address")
     private String address;
 
-    @Column(name = "addditional_address")
+    @Column(name = "additional_address")
     private String additionalAddress;
 
     @Column(name = "city")
     private String city;
 
-    @Column (name = "zipcode")
+    @Column(name = "zipcode")
     private String zipcode;
 
     @Column(name = "rental")
@@ -29,15 +39,16 @@ public class AppartmentEntity {
     @Column(name = "rental_charges")
     private float rentalCharges;
 
-    @Column(name ="security_deposit")
+    @Column(name = "security_deposit")
     private float securityDeposit;
 
-    public AppartmentEntity() {
+    @OneToMany(mappedBy = "appartmentEntity")
+    private List<LeaseContractEntity> leaseContractEntityList;
 
-    }
-
-    public AppartmentEntity(long id, String address, String additionalAddress, String city, String zipcode, float rental, float rentalCharges, float securityDeposit) {
+    public AppartmentEntity(long id, String title, String description, String address, String additionalAddress, String city, String zipcode, float rental, float rentalCharges, float securityDeposit) {
         this.id = id;
+        this.title = title;
+        this.description = description;
         this.address = address;
         this.additionalAddress = additionalAddress;
         this.city = city;
@@ -53,6 +64,22 @@ public class AppartmentEntity {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getAddress() {
@@ -110,4 +137,6 @@ public class AppartmentEntity {
     public void setSecurityDeposit(float securityDeposit) {
         this.securityDeposit = securityDeposit;
     }
+
+
 }

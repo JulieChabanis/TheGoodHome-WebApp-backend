@@ -1,9 +1,11 @@
 package com.webapp.thegoodhomebackend.entity;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "agencies")
+@NoArgsConstructor
 public class AgencyEntity {
 
     @Id
@@ -22,10 +24,6 @@ public class AgencyEntity {
     private String zipcode;
     @Column(name = "description")
     private String description;
-
-    public AgencyEntity() {
-
-    }
 
     public AgencyEntity(long id, String name, String address, String additionalAddress, String city, String zipcode, String description) {
         this.id = id;
