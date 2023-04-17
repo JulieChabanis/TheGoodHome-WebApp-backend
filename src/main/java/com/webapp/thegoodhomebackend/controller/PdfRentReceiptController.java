@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/rent-receipt")
-@CrossOrigin( origins = "http://localhost:3000")
+@CrossOrigin( origins = "https://thegoodhome.netlify.app")
 public class PdfRentReceiptController {
 
     private final PaymentBalanceService paymentBalanceService;

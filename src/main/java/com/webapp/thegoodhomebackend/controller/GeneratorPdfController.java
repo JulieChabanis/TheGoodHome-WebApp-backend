@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/pdf")
-@CrossOrigin( origins = "http://localhost:3000")
+@CrossOrigin( origins = "https://thegoodhome.netlify.app")
 public class GeneratorPdfController {
 
     private final LeaseContractService leaseContractService;

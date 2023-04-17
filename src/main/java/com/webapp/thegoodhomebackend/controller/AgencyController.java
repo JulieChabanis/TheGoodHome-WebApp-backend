@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/agencies")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://thegoodhome.netlify.app")
 
 public class AgencyController {
 
