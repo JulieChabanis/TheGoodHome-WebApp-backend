@@ -11,16 +11,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private static final String AGENCIES_API_URL = "/api/agencies";
-    private static final String APPARTMENTS_API_URL = "/api/appartments";
-    private static final String PDF_API_URL = "/api/pdf";
-    private static final String CONTRACTS_API_URL = "/api/contracts";
-
-  private static final String PAYMENTS_API_URL = "/api/solde_paiements";
-  private static final String RENT_RECEIPT_API_URL = "/api/rent-receipt";
-  private static final String TENANTS_API_URL = "/api/tenants";
-
-
   @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
       httpSecurity
